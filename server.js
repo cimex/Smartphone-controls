@@ -26,7 +26,7 @@ var control = io.of('/control');
 });
 
 app.get('/', function(req, res) {
-	res.sendfile(__dirname + '/connect.html');
+	res.sendfile(__dirname + '/joypad.html');
 });
 
 app.get('/:asset', function(req, res) {
