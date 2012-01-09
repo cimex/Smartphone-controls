@@ -1,0 +1,12 @@
+Joypad.html = snes joypad background image with responsive div overlay
+Screen.html = placeholder screen printing joypad input
+
+----------------
+
+Shake.html demo of using accelerator control input
+Dropball.html demo of using shake.html as a controller of an interactive game
+
+------
+
+
+server.js - middleware for passing information between cliet using node.js
