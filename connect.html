@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="viewport" content="initial-scale=1,user-scalable=0" />
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+		<script src="socket.io/socket.io.js"></script>
+		
+         
+		
+		<style type="text/css">
+			body {background:black;}
+		</style>
+		<script>
+		$(document).ready(function() {
+			var socket = io.connect('/control');
+			socket.on('connect', function() {
+				console.log('initiated');
+			});
+		
+	
+			$('#button-up').bind('click', function(event){
+				console.log('up');
+				socket.emit('control', { control: 'up' });
+			});
+			$('#button-down').bind('click', function(event){
+				socket.emit('control', { control: 'down' });
+			});
+			$('#button-left').bind('click', function(event){
+				socket.emit('control', { control: 'left' });
+			});
+			$('#button-right').bind('click', function(event){
+				socket.emit('control', { control: 'right' });
+			});
+			});
+		</script>
+	</head>
+	<body>
+		<img src="/snes.jpg" width="480"/>
+		<div id="button-up" style="position: absolute;height:54px;width:33px;top:122px;left:99px"></div>
+		<div id="button-down" style="position: absolute;height:54px;width:33px;top:175px;left:99px"></div>
+		<div id="button-left" style="position: absolute;height:54px;width:33px;top:150px;left:66px"></div>
+		<div id="button-right" style="position: absolute;height:54px;width:33px;top:150px;left:132px"></div>
+		
+		
+		
+	</body>
+</html>

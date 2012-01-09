@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0" />
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+	
+		
+         
+		
+	</head>
+	<body>
+		<div id="control-log"></div>
+		<script src="http://localhost:4000/socket.io/socket.io.js"></script>
+		
+		<script>
+			var socket = io.connect('/screen');
+			socket.on('connect', function() {
+				console.log('initiated');
+			});
+		
+			socket.on('controlemit', function(msg) {
+				console.log(msg);
+				$('#control-log').append(msg.user+ ':'+msg.control.control + ' ');
+			});
+			
+		</script>
+	</body>
+</html>
